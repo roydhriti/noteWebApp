@@ -1,22 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useTable } from "react-table";
 import { fetchStockDataAPI } from "../../service/stock-service";
-
-type StockRow = {
-  name: string;
-  purchasePrice: number;
-  quantity: number;
-  exchange: string;
-  cmp: number;
-  peRatio: string;
-  earnings: string;
-  investment: number;
-  presentValue: number;
-  gainLoss: number;
-  portfolioPercent: number;
-  sector: string;
-  [key: string]: any;
-};
+import { StockRowDataType } from "../../data/data-type/Stock-DataType";
 
 const calculateMetrics = ({
   purchasePrice,
@@ -27,7 +12,7 @@ const calculateMetrics = ({
   earnings,
   sector,
   ...rest
-}: any): StockRow => {
+}: any): StockRowDataType => {
   const investment = purchasePrice * quantity;
   const presentValue = cmp * quantity;
   const gainLoss = presentValue - investment;
@@ -49,7 +34,7 @@ const calculateMetrics = ({
 };
 
 const PortfolioTable = ({ portfolio }: { portfolio: any[] }) => {
-  const [rows, setRows] = useState<StockRow[]>([]);
+  const [rows, setRows] = useState<StockRowDataType[]>([]);
 
   const fetchData = async () => {
     const totalInvestment = portfolio.reduce(
@@ -124,7 +109,7 @@ const PortfolioTable = ({ portfolio }: { portfolio: any[] }) => {
   } = tableInstance;
 
   // Group rows by sector
-  const groupedData: Record<string, StockRow[]> = {};
+  const groupedData: Record<string, StockRowDataType[]> = {};
   tableRows.forEach((row: any) => {
     prepareRow(row);
     const sector = row.original.sector || "Unknown Sector";
@@ -132,7 +117,7 @@ const PortfolioTable = ({ portfolio }: { portfolio: any[] }) => {
     groupedData[sector].push(row);
   });
 
-  const renderGroupHeader = (sector: string, stocks: StockRow[]) => {
+  const renderGroupHeader = (sector: string, stocks: StockRowDataType[]) => {
     const totalInvestment = stocks.reduce(
       (sum, r) => sum + r.original.investment,
       0
