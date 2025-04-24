@@ -15,6 +15,8 @@ const PortfolioTable = ({ portfolio }: { portfolio: any[] }) => {
   console.log("portfolio: ", portfolio);
 
   const fetchData = async () => {
+    console.log("Stock data api call: ");
+
     const totalInvestment = portfolio.reduce(
       (acc, s) => acc + s.purchasePrice * s.quantity,
       0
@@ -44,6 +46,8 @@ const PortfolioTable = ({ portfolio }: { portfolio: any[] }) => {
 
   useEffect(() => {
     fetchData();
+    console.log("Stock data api call 1: ");
+
     const interval = setInterval(fetchData, 15000);
     return () => clearInterval(interval);
   }, []);
