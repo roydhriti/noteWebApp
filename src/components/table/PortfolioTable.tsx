@@ -12,6 +12,8 @@ import {
 const PortfolioTable = ({ portfolio }: { portfolio: any[] }) => {
   const [rows, setRows] = useState<StockRowDataType[]>([]);
 
+  console.log("portfolio: ", portfolio);
+
   const fetchData = async () => {
     const totalInvestment = portfolio.reduce(
       (acc, s) => acc + s.purchasePrice * s.quantity,
@@ -19,8 +21,10 @@ const PortfolioTable = ({ portfolio }: { portfolio: any[] }) => {
     );
 
     const updatedData = await Promise.all(
-      portfolio.map(async (stock) => {
-        const result = await fetchStockDataAPI(stock.symbol);
+      portfolio?.map(async (stock) => {
+        const result = await fetchStockDataAPI(stock?.symbol);
+        console.log("Fetched data:", result);
+
         if (result.error) return { ...stock, error: true };
         const { cmp, peRatio, earnings, sector } = result;
 
