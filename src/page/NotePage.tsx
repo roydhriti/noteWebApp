@@ -132,7 +132,7 @@ export const NotePage = () => {
                                 note_title: editingNote.note_title,
                                 note_content: editingNote.note_content,
                             } : undefined}
-                            noteId={editingNote?.id}
+                            noteId={editingNote?.note_id}
                             onCreated={() => {
                                 closeForm();
                                 loadNotes();
