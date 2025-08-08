@@ -32,7 +32,7 @@ const RegisterForm: React.FC = () => {
         try {
             await registerAPI(formData);
             setSuccess("Registration successful!");
-            navigate("/profile")
+            navigate("/login")
         } catch (err: any) {
             setError(err.response?.data?.detail || "Registration failed");
         }

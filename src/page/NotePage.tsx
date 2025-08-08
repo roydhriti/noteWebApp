@@ -92,6 +92,19 @@ export const NotePage = () => {
                 >
                     {showForm ? "Cancel" : "Create Note"}
                 </button>
+
+                <a href="/profile">
+                    <button
+                        style={{
+                            padding: "8px 16px",
+                            cursor: "pointer",
+                            borderRadius: 4,
+                            border: "1px solid #007bff",
+                            backgroundColor: "#007bff",
+                            color: "white",
+                        }}
+                    >Profile</button>
+                </a>
             </div>
 
             {showForm && (
