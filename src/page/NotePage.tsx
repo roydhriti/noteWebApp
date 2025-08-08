@@ -164,41 +164,37 @@ export const NotePage = () => {
                         <h3>{note.note_title}</h3>
                         <p>{note.note_content || "No content"}</p>
 
-                        <button
-                            onClick={() => openEditForm(note)}
-                            style={{
-                                position: "absolute",
-                                bottom: 16,
-                                right: 16,
-                                padding: "4px 8px",
-                                cursor: "pointer",
-                                borderRadius: 4,
-                                border: "1px solid #28a745",
-                                backgroundColor: "#28a745",
-                                color: "white",
-                                fontSize: 12,
-                            }}
-                        >
-                            Edit
-                        </button>
+                        <div className="d-flex gap-2" style={{ justifyContent: "flex-end" }}>
+                            <button
+                                onClick={() => openEditForm(note)}
+                                style={{
+                                    padding: "4px 8px",
+                                    cursor: "pointer",
+                                    borderRadius: 4,
+                                    border: "1px solid #28a745",
+                                    backgroundColor: "#28a745",
+                                    color: "white",
+                                    fontSize: 12,
+                                }}
+                            >
+                                Edit
+                            </button>
 
-                        <button
-                            onClick={() => handleDelete(note.note_id)}
-                            style={{
-                                position: "absolute",
-                                bottom: 16,
-                                right: 16,
-                                padding: "4px 8px",
-                                cursor: "pointer",
-                                borderRadius: 4,
-                                border: "1px solid #dc3545",
-                                backgroundColor: "#dc3545",
-                                color: "white",
-                                fontSize: 12,
-                            }}
-                        >
-                            Delete
-                        </button>
+                            <button
+                                onClick={() => handleDelete(note.note_id)}
+                                style={{
+                                    padding: "4px 8px",
+                                    cursor: "pointer",
+                                    borderRadius: 4,
+                                    border: "1px solid #dc3545",
+                                    backgroundColor: "#dc3545",
+                                    color: "white",
+                                    fontSize: 12,
+                                }}
+                            >
+                                Delete
+                            </button>
+                        </div>
                     </div>
                 ))}
             </div>
