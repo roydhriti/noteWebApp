@@ -1,7 +1,6 @@
-//  const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
-// const API_BASE_URL = "http://209.105.242.30:7777";
-// const API_BASE_URL = "http://127.0.0.1:8000";
-const API_BASE_URL = "https://dynamic-porfolioapi-2.onrender.com";
+
+const API_BASE_URL = "http://127.0.0.1:8000";
+
 
 if (!API_BASE_URL) {
   throw new Error(
@@ -10,8 +9,8 @@ if (!API_BASE_URL) {
 }
 
 const getAuthToken = (): string | null => {
-  return localStorage.getItem("accessToken");
-};
+  return localStorage.getItem("access_token");
+};;
 
 export const apiClient = async <T = any,>(
   endpoint: string,

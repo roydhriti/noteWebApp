@@ -1,0 +1,18 @@
+import React from "react";
+import RegisterForm from "../components/form/RegisterForm";
+
+
+const RegisterPage: React.FC = () => {
+
+
+    return (
+        <div className="flex justify-center items-center min-h-screen bg-gray-100">
+            <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
+                <h2 className="text-2xl font-bold text-center mb-6">Register</h2>
+                <RegisterForm />
+            </div>
+        </div>
+    );
+};
+
+export default RegisterPage;
